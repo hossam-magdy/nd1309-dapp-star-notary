@@ -2,9 +2,12 @@
 
 **PROJECT: Decentralized Star Notary Service Project** - For this project, you will create a DApp by adding functionality with your smart contract and deploy it on the public testnet.
 
-### ToDo
+### Specs
 
-This Starter Code has already implemented the functionalities you implemented in the StarNotary (Version 2) exercise, and have comments in all the files you need to implement your tasks.
+- Truffle version: `5.4.25`, OpenZeppelin version: `4.4.1`
+- ERC-721 Token Name: `HStar Token`
+- ERC-721 Token Symbol: `HST`
+- Token Address on Rinkeby Network: [`0xa5540796991AC0C5c347B22172dd3aAF03019bD2`](https://rinkeby.etherscan.io/address/0xa5540796991AC0C5c347B22172dd3aAF03019bD2)
 
 ### Dependencies
 

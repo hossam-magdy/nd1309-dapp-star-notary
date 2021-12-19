@@ -54,17 +54,24 @@ contract('StarNotary', ([owner, user1, user2]) => {
     const balance = web3.utils.toWei('.05', 'ether');
     await instance.createStar('awesome star', starId, { from: user1 });
     await instance.putStarUpForSale(starId, starPrice, { from: user1 });
-    const balanceOfUser1BeforeTransaction = await web3.eth.getBalance(user2);
-    const balanceOfUser2BeforeTransaction = await web3.eth.getBalance(user2);
-    await instance.buyStar(starId, {
+
+    const balanceOfUser2BeforeBuying = await web3.eth.getBalance(user2);
+
+    const tx3 = await instance.buyStar(starId, {
       from: user2,
       value: balance,
-      gasPrice: 0,
+      // gasPrice: 0, // caused error "transaction underpriced" on Rinkeby
     });
-    const balanceAfterUser2BuysStar = await web3.eth.getBalance(user2);
-    const value =
-      Number(balanceOfUser2BeforeTransaction) -
-      Number(balanceAfterUser2BuysStar);
+    const gasUsed = web3.utils.toBN(tx3.receipt.gasUsed);
+    const gasPrice = web3.utils.toBN(await web3.eth.getGasPrice());
+    const gasUsedInWei = gasUsed.mul(gasPrice);
+
+    const balanceOfUser2AfterBuying = await web3.eth.getBalance(user2);
+    const value = web3.utils
+      .toBN(balanceOfUser2BeforeBuying)
+      .sub(web3.utils.toBN(balanceOfUser2AfterBuying))
+      .sub(gasUsedInWei)
+      .toString();
     assert.equal(value, starPrice);
   });
 
