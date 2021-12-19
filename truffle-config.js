@@ -5,15 +5,13 @@
  * them to suit your project as necessary.
  *
  * More information about configuration can be found at:
- *
- * truffleframework.com/docs/advanced/configuration
+ * http://trufflesuite.com/docs/truffle/reference/configuration
  *
  * To deploy via Infura you'll need a wallet provider (like truffle-hdwallet-provider)
  * to sign your transactions before they're sent to a remote public node. Infura API
  * keys are available for free at: infura.io/register
  *
  *   > > Using Truffle V5 or later? Make sure you install the `web3-one` version.
- *
  *   > > $ npm install truffle-hdwallet-provider@web3-one
  *
  * You'll also need a mnemonic - the twelve word phrase the wallet uses to generate
@@ -89,7 +87,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: '0.8.10', // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {
